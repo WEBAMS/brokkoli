@@ -7,3 +7,5 @@ class Film(models.Model):
     description = models.TextField(blank=True)
     date_publ = models.DateField('Дата выхода')
 
+    def __str__(self):
+        return f'{self.title}, {self.date_publ}'
