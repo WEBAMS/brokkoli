@@ -1,7 +1,7 @@
 from django.db import models
 
 class Genre(models.Model):
-    '''жанры фильмов'''
+    '''Жанры фильмов'''
     name = models.CharField('Название жанра', max_length=50)
     description = models.TextField('Описание', blank=True)
     url = models.SlugField(max_length=50, unique=True) # SlugField отвечает за адрес страницы, unique - уникальная
@@ -27,7 +27,7 @@ class Direction(models.Model):
         verbose_name_plural = 'Режиссеры'
 
 class Film(models.Model):
-    '''информация о фильме'''
+    '''Информация о фильме'''
     title = models.CharField('Название фильма', max_length = 100)
     imag = models.ImageField('Постер', upload_to='image/&Y')
     description = models.TextField(blank=True)
@@ -38,3 +38,7 @@ class Film(models.Model):
 
     def __str__(self):
         return f'{self.title}, {self.date_publ}'
+
+    class Meta:
+        verbose_name = 'Фильм'
+        verbose_name_plural = 'Фильмы'
