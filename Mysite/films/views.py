@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import View
-from models import Film
+from .models import Film
 
 class FilmsView(View):
     '''Список фильмов'''
