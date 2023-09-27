@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-{% for film in film_list %}
-<h2><a href="/{{ film.url }}/"> {{ film.title }}</a> </h2>
+
+<h2>{{ film.title }}</h2>
 <p>Описание фильма: {{ film.description }}</p>
 <p>
     {% for direction in film.directions.all %}
@@ -20,6 +20,6 @@
 </p>
 <p>Постер: </p>
 <img src="{{ film.imag.url }}" width="150px" height="150px">
-{% endfor %}
+
 </body>
 </html>
