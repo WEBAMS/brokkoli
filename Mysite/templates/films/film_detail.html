@@ -96,6 +96,27 @@
             </div>
         </div>
     </section>
+    <div>
+        <span>Оставить отзыв</span>
+        <form action="{% url 'add_review' film.id %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label>Ваш отзыв</label>
+                <textarea name="text_revievs"></textarea>
+            </div>
+            <div>
+                <label>Ваше имя</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label>Ваш Email</label>
+                <input type="email" name="email">
+            </div>
+            <div>
+                <input type="submit">
+            </div>
+        </form>
+    </div>
     <!-- Project End -->
 
 

@@ -42,3 +42,17 @@ class Film(models.Model):
     class Meta:
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
+
+class Reviews(models.Model):
+    '''Отзывы'''
+    email = models.EmailField()
+    name = models.CharField('Имя', max_length=50)
+    text_revievs = models.TextField('Текст отзыва', max_length=3000)
+    film = models.ForeignKey(Film, verbose_name='Фильм', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.name}, {self.film}'
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
