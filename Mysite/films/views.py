@@ -22,5 +22,6 @@ class AddReview(View):
         if form.is_valid():
             form = form.save(commit=False)
             form.film_id = pk
+            form.save()
         return redirect('/')
 
