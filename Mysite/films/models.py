@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Genre(models.Model):
     '''Жанры фильмов'''
@@ -39,6 +40,9 @@ class Film(models.Model):
     def __str__(self):
         return f'{self.title}, {self.date_publ}'
 
+    def get_absolute_url(self):
+        return reverse('film_detail', kwargs={'slug': self.url})
+
     class Meta:
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
@@ -47,7 +51,7 @@ class Reviews(models.Model):
     '''Отзывы'''
     email = models.EmailField()
     name = models.CharField('Имя', max_length=50)
-    text_revievs = models.TextField('Текст отзыва', max_length=3000)
+    text_reviews = models.TextField('Текст отзыва', max_length=3000)
     film = models.ForeignKey(Film, verbose_name='Фильм', on_delete=models.CASCADE)
 
     def __str__(self):

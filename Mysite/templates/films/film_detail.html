@@ -49,7 +49,12 @@
                                     <a href="/">Главная</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="/admin">Авторизация</a>
+                                    {% if user.is_authenticated %}
+                                    <p>Привет, {{ user.username }}, вы авторизованы на сайте!</p>
+                                    <a href="{% url 'logout' %}">Выход</a>
+                                    {% else %}
+                                    <a href="{% url 'login' %}">Авторизация</a>
+                                    {% endif %}
                                 </li>
                             </ul>
                         </div>
@@ -102,7 +107,7 @@
             {% csrf_token %}
             <div>
                 <label>Ваш отзыв</label>
-                <textarea name="text_revievs"></textarea>
+                <textarea name="text_reviews"></textarea>
             </div>
             <div>
                 <label>Ваше имя</label>
@@ -116,6 +121,14 @@
                 <input type="submit">
             </div>
         </form>
+    </div>
+    <div>
+        {% for review in film.reviews_set.all %}
+            <div>
+                <H5>{{ review.name }}</H5>
+                <p>{{ review.text_reviews }}</p>
+            </div>
+        {% endfor %}
     </div>
     <!-- Project End -->
 

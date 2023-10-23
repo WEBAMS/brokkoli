@@ -5,4 +5,4 @@ class RewiewForm(forms.ModelForm):
     '''Форма отзывов'''
     class Meta:
         model = Reviews
-        fields = ('name', 'email', 'text_revievs')
+        fields = ('name', 'email', 'text_reviews')

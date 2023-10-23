@@ -19,9 +19,10 @@ class AddReview(View):
     '''Добавление отзыва'''
     def post(self, request, pk):
         form = RewiewForm(request.POST)
+        film = Film.objects.get(id=pk)
         if form.is_valid():
             form = form.save(commit=False)
-            form.film_id = pk
+            form.film = film
             form.save()
-        return redirect('/')
+        return redirect(film.get_absolute_url())
 
